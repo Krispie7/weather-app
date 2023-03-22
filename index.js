@@ -1,5 +1,7 @@
+let song="chopin"
+let inputLocation = "Bloomington"
 function getWeather(){
-    fetch ("https://api.weatherapi.com/v1/current.json?key=8e6e59ce692d49aa975195207232203&q=bloomington", {mode:"cors"})
+    fetch (`https://api.weatherapi.com/v1/current.json?key=8e6e59ce692d49aa975195207232203&q=${inputLocation}`, {mode:"cors"})
         .then(function(response) {
         return response.json()
         })
@@ -9,7 +11,6 @@ function getWeather(){
         .catch(e => {
             console.log(e)
         })
-        checkBackground()
 }
 
 function processData(data){
@@ -23,3 +24,19 @@ function processData(data){
 }
 
 getWeather()
+
+let locationInput =document.getElementById("locationInput")
+let searchButton = document.getElementById("searchButton")
+
+locationInput.addEventListener('keyup', function (event) {
+    if (event.key ==="Enter"){
+        inputLocation = locationInput.value
+        getWeather()
+    }
+})
+
+searchButton.addEventListener("click", function (e) {
+    inputLocation = locationInput.value
+    getWeather()
+})
+
