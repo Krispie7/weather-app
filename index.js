@@ -1,5 +1,9 @@
-let song="chopin"
 let inputLocation = "Bloomington"
+
+let temperatureC= document.getElementById("tempC")
+let temperatureF= document.getElementById("tempF")
+let condition=document.getElementById("condition")
+
 function getWeather(){
     fetch (`https://api.weatherapi.com/v1/current.json?key=8e6e59ce692d49aa975195207232203&q=${inputLocation}`, {mode:"cors"})
         .then(function(response) {
@@ -20,10 +24,27 @@ function processData(data){
         this.tempC=data.current.temp_c;
     }
     let weather = new weatherObject(data)
+    console.log(weather)
+    if (weather.tempC== undefined){
+        temperatureC.innerHTML="..."
+    }
+    else {
+        temperatureC.innerHTML=weather.tempC+"°C"
+    }
+    if (weather.tempF== undefined){
+        temperatureF.innerHTML="..."
+    }
+    else {
+        temperatureF.innerHTML=weather.tempF+"°F"
+    }
+    if (weather.condition== undefined){
+        condition.innerHTML="..."
+    }
+    else {
+        condition.innerHTML=weather.condition
+    }
     return weather;
 }
-
-getWeather()
 
 let locationInput =document.getElementById("locationInput")
 let searchButton = document.getElementById("searchButton")

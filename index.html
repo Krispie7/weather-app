@@ -9,9 +9,18 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <label for="location">Location:</label>
-    <input type="text" name="location" id="locationInput">
-    <button id="searchButton">Search</button>
+    <div id="pageContainer">
+        <div id="dataContainer">
+            <div class="dataBox" id="tempC">0°C</div>
+            <div class="dataBox" id="tempF">32°F</div>
+            <div class="dataBox" id="condition">Sunny</div>
+        </div>
+        <div id="inputContainer">
+            <label for="location">Location:</label>
+            <input type="text" name="location" id="locationInput">
+            <button id="searchButton">Search</button>
+        </div>
+    </div>
 
 </body>
 </html>
